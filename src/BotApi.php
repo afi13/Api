@@ -329,7 +329,7 @@ class BotApi
         $replyMarkup = null,
         $disableNotification = false
     ) {
-        return Message::fromResponse($this->call('sendMessage', [
+        return $this->call('sendMessage', [
             'chat_id' => $chatId,
             'text' => $text,
             'parse_mode' => $parseMode,
@@ -337,7 +337,7 @@ class BotApi
             'reply_to_message_id' => (int)$replyToMessageId,
             'reply_markup' => is_null($replyMarkup) ? $replyMarkup : $replyMarkup->toJson(),
             'disable_notification' => (bool)$disableNotification,
-        ]));
+        ])
     }
 
     /**
